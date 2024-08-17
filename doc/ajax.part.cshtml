@@ -11,7 +11,7 @@
     <li>url : string 请求地址url</li>
     <li>para : FormData|json|string json对象或FormData对象或者字符串,如果是json对象,会转化成FormData对象.para会设置到initCfg.body属性.</li>
     <li>initCfg : json fetch请求配置对象.例如传headers:{'Auth':'xxx'}用来验证</li>
-    <li>resType : string 返回值类型 默认"json",可选"html"</li>
+    <li>resType : string 返回值类型 默认"json",是json对象,可选"html",是文本内容</li>
     <li>return : Promise 返回值类型,fetch().then()返回的Promise对象</li>
   </ul>
   <p>post请求,.then()链式调用方式.方法发送fetch请求后,调用then()处理,如果res.ok==ok,默认返回json结果.</p>
