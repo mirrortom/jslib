@@ -17,7 +17,7 @@
         if (typeof selector === 'string') {
             if (/^<[a-z]+?>$/.test(selector)) {
                 // 新建元素
-                this.push(document.createElement(selector.substring(1, selector.length - 1)));
+                this.push(document.createElement(selector.substring(1, selector.length-1)));
             }
             else {
                 // 其它选择器
