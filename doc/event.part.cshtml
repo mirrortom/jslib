@@ -13,5 +13,20 @@
   <p>为每个选中的元素绑定click事件,fn(ele)是一个函数,参数ele是点击发生的元素.</p>
   <pre>
 $('#id').click(fn)
+// 没有参数时,每个元素都执行绑定到click的方法.
+$('#id').click()
   </pre>
+
+  <h2>addEvent</h2>
+  <p>添加事件,为每个元素添加事件,内部使用了addEventListener()方法.name是事件名字,fn是事件方法.</p>
+  <pre>
+let fn=()=>{};
+$('#id').addEvent('keyup',fn)
+</pre>
+
+  <h2>removeEvent</h2>
+  <p>删除事件,内部使用removeEventListener()方法.name是事件名字,fn是要删除的方法.</p>
+  <pre>
+$('#id').removeEvent('keyup',fn)
+</pre>
 </div>

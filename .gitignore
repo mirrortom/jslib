@@ -1,3 +1,8 @@
 
 .vscode/settings.json
 publish.json
+/.vs
+/obj
+/bin
+/.gitignore
+/jslib.csproj.user
