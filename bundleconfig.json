@@ -15,7 +15,7 @@
       // 扩展
       "src/ext_com_formcheck.part.js",
       "src/ext_com_ajax.part.js",
-      "src/ext_com_elemstring.part.js"
+      "src/ext_com_h5back.part.js"
     ],
     "minify": {
       "enabled": false

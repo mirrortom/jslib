@@ -3,12 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+  <link href="http://localhost:8002/globalBase.css" rel="stylesheet" />
+  <link href="http://localhost:8002/fullTools.css" rel="stylesheet" />
   <link href="/mirrorui/mirrorui.css" rel="stylesheet" />
   <title>jslib-doc | Mirror Space</title>
   <style>
-    .page {
+    .container {
       display: grid;
-      grid-template-columns: 210px auto;
+      grid-template-columns: 230px auto;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .menu-box {
@@ -22,6 +26,7 @@
 
     .doc-part-box {
       margin: 50px auto;
+      box-shadow: inset 0 3px #facc15;
     }
 
     pre {
@@ -29,12 +34,17 @@
       max-width: 100%;
       padding: 20px;
       background-color: #e5e7eb;
+      font-size: 1rem;
+    }
+
+    p {
+      text-indent: 2em;
+      margin: 1em 0;
     }
   </style>
 </head>
 <body>
-
-  <div class="page">
+  <div class="container">
     <div class="menu-box">
       <m-sidemenu class="sidemenu-box" id="main_menubox">
         <ul class="sidemenu-group">
@@ -87,13 +97,14 @@
           <li><a class="sidemenu-item" href="#valid">valid</a></li>
           <li><a class="sidemenu-item" href="#rand">rand</a></li>
           <li><a class="sidemenu-item" href="#string">string</a></li>
-          <li><a class="sidemenu-item" href="#domstring">domString</a></li>
+          <li><a class="sidemenu-item" href="#h5back">h5back</a></li>
         </ul>
       </m-sidemenu>
     </div>
-    <div class="content pd-15">
+    <div class="content">
       <div id="about">
         <h2>关于jslib</h2>
+        <p><span class="bg-gray-3 pd-4">last update</span>:<span class="txt-gray-5">2025/06/03</span></p>
         <p>在前端框架大发展前,jQuery库是最流行的js库,最强大的功能就是dom操作.还提供好多工具函数,不必使用复杂的原生js,使用jQuery简单多了.</p>
         <p>随着浏览器的进化,jQuery逐渐丢掉历史包袱,目前最新3.5版本不会再支持旧是浏览器,尤其是很老的IE.</p>
         <p>新浏览器支持的js函数可以比较方便的操作dom,这种方便和jQuery的便利相差无几了.前端框架使用绑定数据到dom的数据驱动模式,不再使用dom选择器.</p>
@@ -114,7 +125,7 @@
       @Include("/doc/valid.part.cshtml")
       @Include("/doc/rand.part.cshtml")
       @Include("/doc/string.part.cshtml")
-      @Include("/doc/domstring.part.cshtml")
+      @Include("/doc/h5back.part.cshtml")
     </div>
   </div>
   <script src="jslib.js"></script>
