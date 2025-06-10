@@ -3,16 +3,30 @@
   <p>h5回退组件.用于网页单页应用的回退导航.</p>
   <p>使用了h5的3个API,replaceState,pushState,onpopstate.通过自定义浏览器历史记录,实现单页页面加载,回退功能.</p>
   <pre>
-let back=win.ns.hisBack;
+// 获取对象
+let back=win.ns.hisBack();
 // 基准页,栈底.页面回退终点.在单页应用加载时,执行一次.
 back.setBase();
 // 载入新页面时,执行加入历史记录.
 back.addHis();
 // 回退时,执行方法onBack(stackIndex),参数是栈索引值.
-obj.onBack = null;
+obj.onBack = (stackIndex)=>{};
 </pre>
-  <p class="mg-t-10">这个方式的关键功能在于onpopstate事件,浏览器回退和前进时会触发这个事件.事先在pushState()方法载入新页面时,参数里放一个栈索引值,表示载入的这个页面.然后当点击了浏览器回退按钮时,这个事件触发了,在方法的参数里会拿到pushState()时放入的栈索引值,将这个值于当前页面的索引值比较,如果小于,就是回退了,于是执行页面处理方法.</p>
-  <p class="mg-t-10">实现单页web应用的方式,常用的几种有:</p>
+  <p>这个方式的关键功能在于onpopstate事件,浏览器回退和前进时会触发这个事件.事先在pushState()方法载入新页面时,参数里放一个栈索引值,表示载入的这个页面.然后当点击了浏览器回退按钮时,这个事件触发了,在方法的参数里会拿到pushState()时放入的栈索引值,将这个值于当前页面的索引值比较,如果小于,就是回退了,于是执行页面处理方法.</p>
+  <p>如果修改url的hash值,也会触发onpopstate事件,这是另一种实现回退的方式.但这里是使用的H5的3个API,而不希望发生这种的,只希望在点击后退按钮时触发!所以,事件里要判断.</p>
+  <pre>
+// www.abc.com
+location.hash = '#pageId=' + about;
+// 修改后url
+www.abc.com#pageId=about
+// 
+win.onpopstate=function (event) {
+// 要排除掉这种触发行为.
+if (!event.state) return;
+}
+</pre>
+  <h4>单页web应用</h4>
+  <p>实现单页web应用的方式,常用的几种有:</p>
   <p>覆盖式:最新的页面覆盖在上一个页面上,使用absolut定位方式,或者使用display:none隐藏上个页面,index页面始终只显示一个页面.页面的显示隐藏,可以在onback(stackIndex)方法里进行.</p>
   <p>缓存式:将上个页面缓存起来,每次index显示最新的页面时,将现有的页面缓存起来.比如放到createDocumentFragment()方法建立的html文档对象里.这个对象的内容不会显示在index里,是一个独立的html文档.</p>
   <p>无状态式:每次都是重新载入页面,历史记录里顺序存放页面的地址,回退时重新加载.</p>
