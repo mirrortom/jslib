@@ -15,20 +15,33 @@ window.jslib = factory
 if(!window.$)
     window.$ = factory
 </pre>
+  <h4>length属性</h4>
+  <p>用于获取选中的元素个数.如果没有选中任何元素,这个属性值是undefined</p>
+  <pre>
+&lt;div id="box"&gt;
+    &lt;a href="#"&gt;a1&lt;/a&gt;
+    &lt;a href="#"&gt;a2&lt;/a&gt;
+    &lt;a href="#"&gt;a3&lt;/a&gt;
+&lt;/div&gt;
+// 选取box下的所有a元素,有3个
+let len = $('#box a').length // len=3
+// 没有选中任何元素
+let len1 = $('#box span').length // len1=undefined
+  </pre>
   <h4>jslib对象实例方法</h4>
   <pre>
-    // 向jslib类数组添加元素
-    $().push(dom)
+// 向jslib类数组添加元素
+$().push(dom)
 
-    // jslib类数组中是否已有指定元素
-    $().contains(dom);
+// jslib类数组中是否已有指定元素
+$().contains(dom);
 
-    // 重置jslib类数组内容.如果传入elemlist,则添加到jslib类数组
-    // elemlist用于填充的新DOM元素列表,如果其中元素已经在jslib类数组中,则不会重复添加
-    $().reset(elemlist)
+// 重置jslib类数组内容.如果传入elemlist,则添加到jslib类数组
+// elemlist用于填充的新DOM元素列表,如果其中元素已经在jslib类数组中,则不会重复添加
+$().reset(elemlist)
 
-    // 遍历jslib类数组元素.
-    $().each(fn)
+// 遍历jslib类数组元素.
+$().each(fn)
 </pre>
   <h4>获取dom对象</h4>
   <pre>

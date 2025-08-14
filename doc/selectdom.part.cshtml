@@ -30,6 +30,15 @@ $('#id1').find(':scope > span')
 // 找到span.ss,不会找到p里面的span
 </pre>
 </div>
+<div class="doc-part-box" id="filter">
+  <h2>filter(condition)</h2>
+  <p>从已经选择的元素中,筛选出符合条件的.condition:function,条件函数,参数是dom元素,返回ture/false</p>
+  <pre>
+&lt;div id="id1"&gt;&lt;span class="ss" checked &gt;&lt;/span&gt;&lt;p&gt;aa&lt;span&gt;bb&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+// 匹配带有checked属性的 span
+$('#id1 span').filter((item)=>{item.hasAttribute('checked');})
+</pre>
+</div>
 <div class="doc-part-box" id="eq">
   <h2>eq(index)</h2>
   <p>筛选取匹配元素的第n个元素</p>
@@ -115,6 +124,15 @@ $('p').prop('p1')
 $('p').prop('p1','bb')
 // 多个属性时,传对象
 $('p').prop({style:'display:"block",color:"red"' ,role:"main-title"})
+</pre>
+</div>
+<div class="doc-part-box" id="hasProp">
+  <h2>hasProp(val)</h2>
+  <p>检查第一个匹配的元素是否含有指定的属性(原生: hasAttribute)</p>
+  <pre>
+&lt;span class="primary btn cc" p2="dd"&gt;&lt;/span&gt;
+// 返回 true
+$('span').hasProp("p2");
 </pre>
 </div>
 <div class="doc-part-box" id="val">
