@@ -287,7 +287,8 @@ factory.extend({
         return true;
       }
       let p = item.parentNode.closest(selector);
-      matched.push(p);
+      if (p)
+        matched.push(p);
     });
     // 重置已选元素
     return this.reset(matched);
