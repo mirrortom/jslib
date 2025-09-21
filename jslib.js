@@ -271,6 +271,20 @@ factory.extend({
     return this.reset(matched);
   },
   /**
+   * 以已经匹配的元素为根,查找第一个子元素.(原生: element.firstElementChild)
+   * @returns {jslib} 返回this
+   */
+  'first': function () {
+    let matched = [];
+    this.each((item) => {
+      let firstNode = item.firstElementChild;
+      if (firstNode)
+        matched.push(firstNode);
+    });
+    // 重置已选元素
+    return this.reset(matched);
+  },
+  /**
    * 筛选取匹配元素的第n个元素(模拟jquery的eq()筛选方法)
    * @param {number} index 下标
    * @returns {jslib} 返回this
@@ -489,13 +503,8 @@ factory.extend({
    * @returns {jslib} return this
    */
   'addClass': function (...val) {
-    let tmp = [];
-    val.forEach((item) => {
-      if (item)
-        tmp.push(item);
-    });
     this.each((item) => {
-      item.classList.add(...tmp);
+      item.classList.add(...val);
     });
     return this;
   },
@@ -510,13 +519,8 @@ factory.extend({
         item.setAttribute('class', '');
       });
     }
-    let tmp = [];
-    val.forEach((item) => {
-      if (item)
-        tmp.push(item);
-    });
     this.each((item) => {
-      item.classList.remove(...tmp);
+      item.classList.remove(...val);
     });
     return this;
   },
@@ -555,6 +559,11 @@ factory.extend({
   'html': function (val) {
     if (val === undefined) {
       if (!this[0]) return;
+      if (this[0] instanceof DocumentFragment) {
+        let formatStr = new XMLSerializer().serializeToString(this[0]);
+        let outhtml = formatStr.replace(/ xmlns=".+?"/g, '');
+        return outhtml;
+      }
       return this[0].innerHTML;
     }
     this.each((dom) => {

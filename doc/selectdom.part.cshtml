@@ -39,6 +39,15 @@ $('#id1').find(':scope > span')
 $('#id1 span').filter((item)=>{item.hasAttribute('checked');})
 </pre>
 </div>
+<div class="doc-part-box" id="first">
+  <h2>first()</h2>
+  <p>从已经选择的元素中,查找第一个子元素.使用js的firstElementChild属性</p>
+  <pre>
+&lt;div id="id1"&gt;&lt;span class="ss"&gt;&lt;/span&gt;&lt;p&gt;aa&lt;span&gt;bb&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+// 第一个子元素 span
+$('#id1').first();
+</pre>
+</div>
 <div class="doc-part-box" id="eq">
   <h2>eq(index)</h2>
   <p>筛选取匹配元素的第n个元素</p>
